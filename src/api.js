@@ -4,17 +4,18 @@ import firebase from 'firebase';
 
 export function createStudent(){
 	var student = {
-		firstName:   undefined,
-		lastName:    undefined,
-		age:         undefined,
-		flower_id:   undefined,
-		location:    undefined,
-		likes:       undefined,
-		dislikes:    undefined,
-		schedule_id: undefined,
+		firstName:   '',
+		lastName:    '',
+		age:         null,
+		flower_id:   null,
+		location:    null,
+		likes:       [],
+		dislikes:    [],
+		schedule_id: null,
 	};
-	studentKey = firebase.database().ref().child('students').push().key;
-	return firebase.database().ref().update({'/students/' + studentKey: student});
+	const studentKey = firebase.database().ref().child('students').push().key;
+    firebase.database().ref().update({ ['/students/' + studentKey]: student});
+    return studentKey;
 
 }
 

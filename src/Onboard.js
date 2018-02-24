@@ -22,11 +22,10 @@ class Onboard extends Component {
     // this.props.onComplete({ id: key, accountType: 'educators' });
   }
   registerAsParent = async () => {
-    const response = await createStudent();
+    const key = await createStudent();
     debugger;
     Cookies.set('id', key);
     Cookies.set('accountType', 'students');
-    writeStudentData({ id: key });
     this.props.onComplete({ id: key, accountType: 'students' });
   }
 

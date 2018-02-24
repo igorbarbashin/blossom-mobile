@@ -19,16 +19,30 @@ export function createStudent(){
 		dislikes:    undefined,
 		schedule_id: undefined,
 	};
-	return firebase.database().ref().child('posts').push();
+	return firebase.database().ref().child('students').push();
 }
 
 export function createEducator(){
-	var educator = {}
-	firebase.database().ref('educators/' + educators.id).set(educators);
+	var educator = {
+		firstName:     undefined,
+		lastName:      undefined,
+		phone:         undefined,
+		email:         undefined,
+		avatar:        undefined,
+		certification: undefined,
+	}
+	return firebase.database().ref().child('educators').push();
 }
 
 export function createCard(){
-	var card = {}
+	var card = {
+		title:       undefined,
+		description: undefined,
+		image:       undefined,
+		capacity:    undefined,
+		educator_id: undefined,
+		location:    undefined,
+	}
 	firebase.database().ref('cards/' + card.id).set(card);
 }
 

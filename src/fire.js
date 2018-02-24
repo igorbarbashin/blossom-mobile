@@ -8,4 +8,4 @@ projectId: "blossom-mobile",
 storageBucket: "blossom-mobile.appspot.com",
 messagingSenderId: "259425460375"
 };
-firebase.initializeApp(config);
+export default firebase.initializeApp(config);

@@ -5,6 +5,7 @@
   "dependencies": {
     "@firebase/app-types": "^0.1.2",
     "firebase": "^4.10.1",
+    "js-cookie": "^2.2.0",
     "npm": "^4.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

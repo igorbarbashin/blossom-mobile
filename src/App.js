@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import Cookies from 'js-cookie';
+
 import Onboard from './Onboard';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -14,6 +16,16 @@ class App extends Component {
   }
   componentDidMount(){
    // Get cookie. type and id
+   const id = Cookies.get('id');
+   const accountType = Cookies.get('accountType');
+
+   if (id && accountType) {
+     this.setState({
+       isRegistered: true,
+       id,
+       accountType,
+     })
+   }
   }
   
   render() {

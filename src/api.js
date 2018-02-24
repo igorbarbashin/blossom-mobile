@@ -4,29 +4,34 @@ import firebase from 'firebase';
 
 export function createStudent(){
 	var student = {
-		firstName:   undefined,
-		lastName:    undefined,
-		age:         undefined,
-		flower_id:   undefined,
-		location:    undefined,
-		likes:       undefined,
-		dislikes:    undefined,
-		schedule_id: undefined,
+		firstName:   '',
+		lastName:    '',
+		age:         null,
+		flower_id:   null,
+		location:    null,
+		likes:       [],
+		dislikes:    [],
+		schedule_id: null,
 	};
-	studentKey = firebase.database().ref().child('students').push().key;
-	return firebase.database().ref().update({'/students/' + studentKey: student});
+	const studentKey = firebase.database().ref().child('students').push().key;
+    firebase.database().ref().update({ ['/students/' + studentKey]: student});
+    return studentKey;
+
+>>>>>>> ecf97cfe46ee7400ef6213038b6e198b26ed48bd
 }
 
 export function createEducator(){
 	var educator = {
-		firstName:     undefined,
-		lastName:      undefined,
-		phone:         undefined,
-		email:         undefined,
-		avatar:        undefined,
-		certification: undefined,
+		firstName:     '',
+		lastName:      '',
+		phone:         null,
+		email:         null,
+		avatar:        null,
+		certification: null,
 	}
-	return firebase.database().ref().child('educators').push();
+	const educatorKey = firebase.database().ref().child('educators').push().key;
+    firebase.database().ref().update({ ['/educators/' + educatorKey]: educator});
+    return educatorKey;
 }
 
 export function createCard(){

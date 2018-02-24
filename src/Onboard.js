@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
 import { Button } from 'semantic-ui-react';
 import styled from 'styled-components';
+
+import { createStudent } from './api';
 
 const Wrap = styled.div`
   display: flex;
@@ -16,7 +17,9 @@ class Onboard extends Component {
   registerAsEducator = () => {
     this.props.onComplete();
   }
-  registerAsParent = () => {
+  registerAsParent = async () => {
+    const response = await createStudent();
+    debugger;
     this.props.onComplete();
   }
 

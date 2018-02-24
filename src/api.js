@@ -36,14 +36,16 @@ export function createEducator(){
 
 export function createCard(){
 	var card = {
-		title:       undefined,
-		description: undefined,
-		image:       undefined,
-		capacity:    undefined,
-		educator_id: undefined,
-		location:    undefined,
+		title:       '',
+		description: '',
+		image:       null,
+		capacity:    null,
+		educator_id: null,
+		location:    null,
 	}
-	return firebase.database().ref().child('cards').push();
+	const cardKey = firebase.database().ref().child('cards').push().key;
+    firebase.database().ref().update({ ['/cards/' + cardKey]: card});
+    return cardKey;
 }
 
 export function writeStudentData(student){

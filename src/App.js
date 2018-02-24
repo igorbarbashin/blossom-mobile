@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 
 import Onboard from './Onboard';
+import EducatorProfile from './EducatorProfile';
 import './App.css';
 
 class App extends Component {
@@ -9,6 +10,9 @@ class App extends Component {
     isRegistered: false,
     accountType: undefined,
     id: undefined,
+    isEditingProfile: false,
+    isViewingCards: false,
+    isAddingCard: false,
   }
 
   constructor(props) {
@@ -29,10 +33,13 @@ class App extends Component {
   }
   
   render() {
-    const { isRegistered } = this.state;
+    const { isRegistered, accountType, isEditingProfile } = this.state;
+    const isEducator = accountType === 'educators';
+
     return (
       <div className="App">
-        {!isRegistered && <Onboard onComplete={(registerData) => this.setState({ isRegistered: true, ...registerData })} />}
+        {!isRegistered && <Onboard onComplete={(registerData) => this.setState({ isRegistered: true, ...registerData, isEditingProfile: true })} />}
+        {isEditingProfile && isEducator && <EducatorProfile onComplete={() => this.setState({ isEditingProfile: false, isViewingCards: true })} />}
       </div>
     );
   }

@@ -15,7 +15,6 @@ export function createStudent(){
 	};
 	studentKey = firebase.database().ref().child('students').push().key;
 	return firebase.database().ref().update({'/students/' + studentKey: student});
-
 }
 
 export function createEducator(){

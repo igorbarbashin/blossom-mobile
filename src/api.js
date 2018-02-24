@@ -1,12 +1,6 @@
 
 import fire from './fire';
-
-function addMessage(e){
-    e.preventDefault(); // <- prevent form submit from reloading the page
-    /* Send the message to Firebase */
-    fire.database().ref('messages').push( this.inputEl.value );
-    this.inputEl.value = ''; // <- clear the input
-}
+import firebase from 'firebase';
 
 export function createStudent(){
 	var student = {
@@ -43,16 +37,15 @@ export function createCard(){
 		educator_id: undefined,
 		location:    undefined,
 	}
-	firebase.database().ref('cards/' + card.id).set(card);
+	return firebase.database().ref().child('cards').push();
 }
-
 
 export function writeStudentData(student){
 	firebase.database().ref('students/' + student.id).set(student);
 }
 
 export function writeEducatorData(educator){
-	firebase.database().ref('educators/' + educators.id).set(educators);
+	firebase.database().ref('educators/' + educator.id).set(educator);
 }
 
 export function writeCardData(card){

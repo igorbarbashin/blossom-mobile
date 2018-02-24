@@ -32,7 +32,7 @@ class App extends Component {
     const { isRegistered } = this.state;
     return (
       <div className="App">
-        {!isRegistered && <Onboard onComplete={() => this.setState({ isRegistered: true })} />}
+        {!isRegistered && <Onboard onComplete={(registerData) => this.setState({ isRegistered: true, ...registerData })} />}
       </div>
     );
   }

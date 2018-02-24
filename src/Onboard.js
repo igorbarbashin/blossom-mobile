@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import styled from 'styled-components';
+import Cookies from 'js-cookie';
 
-import { createStudent } from './api';
+import { createStudent, createEducator, writeStudentData, writeEducatorData } from './api';
 
 const Wrap = styled.div`
   display: flex;
@@ -14,13 +15,18 @@ const Panel = styled.div`
 
 
 class Onboard extends Component {
-  registerAsEducator = () => {
-    this.props.onComplete();
+  registerAsEducator = async () => {
+    // const response = await createStudent();
+    // Cookies.set('id', response.key);
+    // Cookies.set('accountType', 'students');
+    // this.props.onComplete({ id: key, accountType: 'educators' });
   }
   registerAsParent = async () => {
-    const response = await createStudent();
-    debugger;
-    this.props.onComplete();
+    const { key } = await createStudent();
+    Cookies.set('id', key);
+    Cookies.set('accountType', 'students');
+    writeStudentData({ id: key });
+    this.props.onComplete({ id: key, accountType: 'students' });
   }
 
 

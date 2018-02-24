@@ -1,5 +1,6 @@
 
 import fire from './fire';
+import firebase from 'firebase';
 
 function addMessage(e){
     e.preventDefault(); // <- prevent form submit from reloading the page
@@ -24,7 +25,7 @@ export function createStudent(){
 
 export function createEducator(){
 	var educator = {}
-	firebase.database().ref('educators/' + educators.id).set(educators);
+	firebase.database().ref('educators/' + educator.id).set(educator);
 }
 
 export function createCard(){
@@ -38,7 +39,7 @@ export function writeStudentData(student){
 }
 
 export function writeEducatorData(educator){
-	firebase.database().ref('educators/' + educators.id).set(educators);
+	firebase.database().ref('educators/' + educator.id).set(educator);
 }
 
 export function writeCardData(card){
